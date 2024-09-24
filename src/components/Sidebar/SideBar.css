@@ -1,0 +1,198 @@
+.sidebar{
+    min-height: 100vh;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f0f4f9;
+    padding: 10px 5px;
+    animation: blurFadeInLight 0.7s forwards;
+    transition: width 0.3s ease; 
+    width: 70px; 
+}
+
+.sidebar.extended {
+    width: 200px; 
+}
+
+.sidebar.dark {
+    background-color: #1e1f20;
+    color: white;
+    animation: blurFadeIn 0.7s forwards; 
+}
+
+.sidebar img{
+    width: 21px;
+}
+
+.sidebar .menu {  
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 25px;
+}
+
+.sidebar .top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+}
+
+.sidebar.dark .top img{
+    filter: invert(1);
+}
+
+.sidebar .new-chat{
+    margin-top: 45px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    height: 40px;
+    background-color: #e6eaf1;
+    border-radius: 50px;
+    font-size: 14px;
+    color: black;
+    cursor: pointer;
+}
+
+.new-chat p {
+
+    animation: fadeIn 1s ease;
+}
+
+.sidebar.dark .new-chat {
+    background-color: white;
+}
+
+.sidebar .recent{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 2s ease;
+}
+
+
+.recent .recent-entries {
+    max-height: 341px; 
+    overflow-y: scroll;
+    animation: fadeInSlideDown 0.5s ease-out;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+.sidebar .recent-entries::-webkit-scrollbar {
+    display: none;
+}
+
+.recent .recent-entry {
+    display: flex;
+    margin: 3px 0;
+    cursor: pointer;  
+}
+
+.sidebar .recent-title{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.sidebar .bottom{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.sidebar .clear-recent{
+    display: inline-flex;
+    align-items: center;
+    padding: 10px;
+    height: 40px;
+    background-color: #e6eaf1;
+    border-radius: 50px;
+    font-size: 14px;
+    color: black;
+    cursor: pointer;
+}
+
+.clear-recent p {
+    animation: fadeIn 1s ease;
+}
+
+.sidebar.dark .clear-recent {
+    background-color: white;
+}
+
+.sidebar .circle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e2e6eb;
+}
+
+.sidebar.dark .circle-wrapper {
+    background-color: white;
+}
+
+.circle-wrapper .theme-toggle {
+    transform: scale(2); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rotate-animation {
+    animation: rotate 1s linear;
+}
+
+/* Light mode blur fade-in effect */
+@keyframes blurFadeInLight {
+    0% {
+        filter: blur(10px) opacity(0);
+    }
+    100% {
+        filter: blur(0) opacity(1);
+    }
+}
+
+/* Dark mode blur fade-in effect */
+@keyframes blurFadeIn {
+    0% {
+        filter: blur(10px) opacity(0);
+    }
+    100% {
+        filter: blur(0) opacity(1);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Add recent prompt animation */
+@keyframes fadeInSlideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);  /* Slide down from above */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width:600px){
+    .sidebar{
+        display: none;
+    }
+}

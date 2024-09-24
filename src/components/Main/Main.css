@@ -1,0 +1,459 @@
+.main {
+    flex: 1;
+    min-height: 100vh;
+    padding-bottom: 15vh;
+    position: relative;
+    animation: blurFadeInLight 0.7s forwards;
+}
+
+.main.dark {
+    background-color: #131314;
+    color: white;
+    animation: blurFadeIn 0.7s forwards;
+}
+
+.main .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 22px;
+    padding: 20px;
+    color: #585858;
+}
+
+.main .nav p {
+    position: relative;
+    top: -10px;
+    background: -webkit-linear-gradient(16deg, #00aeff, #1aff2d);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+
+.main .nav img {
+    width: 50px;
+    border-radius: 50%;
+    box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.main .nav img:hover {
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.25), 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Neon  glow effect in dark theme */
+.main.dark .nav img {
+    box-shadow: 0 0 10px 5px rgba(0, 255, 255, 0.6),
+                0 0 20px rgba(26, 255, 45, 0.8), 
+                0 0 30px rgba(26, 255, 45, 0.6);
+    transition: box-shadow 0.3s ease;
+}
+
+.main.dark .nav img:hover {
+    box-shadow: 0 0 15px 7px rgba(0, 255, 255, 0.8),
+                0 0 25px rgba(26, 255, 45, 0.8),
+                0 0 35px rgba(26, 255, 45, 0.8);
+}
+
+
+.main-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.main .greet {
+    margin: 20px 0px;
+    /* Orginal : 50px 0px*/
+    font-size: 55px;
+    color: #c4c7c5;
+    font-weight: 500;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeInSlideUp 1s ease forwards;
+}
+
+.main.dark .greet {
+    animation: fadeInSlideUpDark 1s ease forwards;
+}
+
+.main .greet span {
+    background: -webkit-linear-gradient(16deg, #00aeff, #1aff2d);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.main .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.main .cards .card {
+    height: 200px;
+    padding: 15px;
+    background-color: #f0f4f9;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    animation: slideInFromLeft 0.5s ease forwards;
+    animation-delay: calc(var(--card-index) * 0.15s);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.main.dark .cards .card {
+    background-color: #1e1f20;
+    animation: slideInFromLeftDark 0.5s ease forwards;
+    animation-delay: calc(var(--card-index) * 0.15s);
+    opacity: 0;
+}
+
+.main .card img {
+    width: 53px;
+    padding: 5px;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 20px;
+    bottom: 10px;
+    right: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.main .card p {
+    color: #585858;
+    font-size: 17px;
+}
+
+.main.dark .card p {
+    color: white;
+}
+
+.main .card:hover {
+    background-color: #dfe4ea;
+}
+
+.main.dark .card:hover {
+    background-color: #2b2c2d;
+}
+
+.main-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-width: 900px;
+    padding: 0px 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #f0f4f9;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.main.dark .search-box {
+    background-color: #1e1f20;
+}
+
+.search-box img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 18px;
+}
+
+.input-icons {
+    display: flex;
+    align-items: center;
+}
+
+.gallery-preview {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.gallery-preview input {
+    display: none;
+}
+
+.gallery-preview .delete-icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-preview:hover .delete-icon {
+    opacity: 1;
+}
+
+.uploaded-image-preview {
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    filter: none;
+}
+
+.main.dark .gallery-preview .uploaded-image-preview {
+    filter: none; /* Ensure no filter is applied in dark mode */
+}
+
+.search-box div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.main .bottom-info {
+    font-size: 13px;
+    margin: 15px auto;
+    text-align: center;
+    font-weight: 300;
+}
+
+.result {
+    padding: 0px 5%;
+    max-height: 70vh;
+    overflow-y: scroll;
+}
+
+.result::-webkit-scrollbar {
+    display: none;
+}
+
+.result-title {
+    margin: 40px 0px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.result img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.result-data {
+    display: flex;
+    align-items: start;
+    gap: 20px;
+}
+
+.result-data img {
+    filter: hue-rotate(290deg);
+}
+
+.result-data .functionalities {
+    display: flex;
+    align-items: center;
+    /* Vertically aligns the icons in the same row */
+    gap: 10px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.result-data .functionalities .icon-container {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-data .functionalities .volume-icon-container {
+    transform: scale(0.9);
+    transform-origin: center;
+    overflow: hidden;
+}
+
+
+.result-data .functionalities .copy-icon-container {
+    transform: scale(1.7);
+    transform-origin: center;
+    overflow: hidden;
+}
+
+.result-data .prompt-result p {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.loader {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.loader hr {
+    height: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #f6f7f8;
+    background: linear-gradient(to right, #9ed7ff, #ffffff, #9ed7ff);
+    background-size: 200% 100%;
+    animation: loader 3s infinite linear;
+}
+
+.main.dark .search-box input {
+    color: white;
+}
+
+.search-box img.listening {
+    animation: pulse 1.5s infinite;
+}
+
+.main.dark .search-box.glowing {
+    animation: neonPulse 0.5s ease-in-out;
+}
+
+.main.dark .volume-icon-container,
+.main.dark .copy-icon-container,
+.main.dark .search-box img {
+    filter: invert(1);
+}
+
+@keyframes loader {
+    0% {
+        background-position: -100% 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Neon cyan effect for search box in dark theme */
+@keyframes neonPulse {
+    0% {
+        box-shadow: 0 0 8px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.8);
+    }
+
+    100% {
+        box-shadow: 0 0 8px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+}
+
+/* Keyframes for fade-in and slide-up animation */
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInSlideUpDark {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeftDark {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+/* Responsive */
+@media (max-width:600px) {
+    .main .nav p {
+        position: relative;
+        top: 0px;
+    }
+
+    .main-bottom input {
+        flex: none;
+        width: 150px;
+    }
+
+    .main-bottom img {
+        width: 20px;
+    }
+
+    .search-box {
+        padding: 5px 10px;
+    }
+
+    .search-box div {
+        gap: 5px;
+    }
+}
