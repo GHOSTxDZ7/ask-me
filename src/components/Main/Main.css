@@ -371,15 +371,15 @@
 /* Neon cyan effect for search box in dark theme */
 @keyframes neonPulse {
     0% {
-        box-shadow: 0 0 8px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.5);
+        box-shadow: 0 0 8px rgba(26, 255, 45, 0.3), 0 0 10px rgba(26, 255, 45, 0.8);
     }
 
     50% {
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.8);
+        box-shadow: 0 0 20px rgba(26, 255, 45, 0.3), 0 0 20px rgba(26, 255, 45, 0.8);
     }
 
     100% {
-        box-shadow: 0 0 8px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.5);
+        box-shadow: 0 0 8px rgba(26, 255, 45, 0.3), 0 0 10px rgba(26, 255, 45, 0.6);
     }
 }
 

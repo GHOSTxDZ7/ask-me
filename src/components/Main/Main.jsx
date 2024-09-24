@@ -157,7 +157,6 @@ const Main = () => {
         copyLottieRef.current.goToAndStop(0, true);  // Reset to the first frame
     }
 
-
     return (
         <div className={`main ${darkMode ? 'dark' : ''}`}>
             <div className="nav">
